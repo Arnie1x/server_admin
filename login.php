@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               $_SESSION["loggedin"] = TRUE;
 
               # Redirect user to index page
-              echo "<script>" . "window.location.href='./'" . "</script>";
+              echo "<script>" . "window.location.href='./index.php'" . "</script>";
               exit;
             } else {
               # If password is incorrect show an error message
