@@ -89,7 +89,6 @@ session_start();
                   <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
                 <?php
-                echo "<li class='nav-item'><a class='nav-link' href=''>Login Status: , " + isset($_SESSION["loggedin"]) + $_SESSION["loggedin"] + "</a></li>";
                 if (isset($_SESSION["username"])) {
                   echo "<li class='nav-item'><a class='nav-link' href=''>Hello, " + htmlspecialchars($_SESSION["username"]) + "</a></li>";
                   echo "<li class='nav-item'><a class='nav-link' href='./logout.php'>Logout</a></li>";
