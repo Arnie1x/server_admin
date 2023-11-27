@@ -2,11 +2,11 @@
 # Initialize the session
 session_start();
 
-# If user is not logged in then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-  echo "<script>" . "window.location.href='./index.html';" . "</script>";
-  exit;
-}
+// # If user is not logged in then redirect him to login page
+// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+//   echo "<script>" . "window.location.href='./login.php';" . "</script>";
+//   exit;
+// }
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +64,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <span>
                 FixFinder
               </span>
@@ -77,7 +77,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="about.html"> About</a>
@@ -88,9 +88,15 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
                 <li class="nav-item">
                   <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php">Hello, <?= htmlspecialchars($_SESSION["username"]); ?>
-                </li>
+                <?php
+                if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
+                  echo "<li class='nav-item'><a class='nav-link' href='./login.php'>Login</a></li>";
+                  echo "<li class='nav-item'><a class='nav-link' href='./register.php'>Register</a></li>";
+                } else {
+                  echo "<li class='nav-item'><a class='nav-link' href=''>Hello, " + htmlspecialchars($_SESSION["username"]) + "</a></li>";
+                  echo "<li class='nav-item'><a class='nav-link' href='./logout.php'>Logout</a></li>";
+                }
+                ?>
               </ul>
             </div>
           </nav>
