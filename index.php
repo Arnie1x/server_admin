@@ -89,12 +89,12 @@ session_start();
                   <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
                 <?php
-                if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-                  echo "<li class='nav-item'><a class='nav-link' href='./login.php'>Login</a></li>";
-                  echo "<li class='nav-item'><a class='nav-link' href='./register.php'>Register</a></li>";
-                } else {
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
                   echo "<li class='nav-item'><a class='nav-link' href=''>Hello, " + htmlspecialchars($_SESSION["username"]) + "</a></li>";
                   echo "<li class='nav-item'><a class='nav-link' href='./logout.php'>Logout</a></li>";
+                } else {
+                  echo "<li class='nav-item'><a class='nav-link' href='./login.php'>Login</a></li>";
+                  echo "<li class='nav-item'><a class='nav-link' href='./register.php'>Register</a></li>";
                 }
                 ?>
               </ul>
