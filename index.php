@@ -1,14 +1,3 @@
-<?php
-# Initialize the session
-session_start();
-
-// # If user is not logged in then redirect him to login page
-// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-//   echo "<script>" . "window.location.href='./login.php';" . "</script>";
-//   exit;
-// }
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -89,7 +78,9 @@ session_start();
                   <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
                 <?php
-                if (isset($_SESSION["username"])) {
+                session_start();
+
+                if (isset($_SESSION["username"]) == TRUE) {
                   echo "<li class='nav-item'><a class='nav-link' href=''>Hello, " + htmlspecialchars($_SESSION["username"]) + "</a></li>";
                   echo "<li class='nav-item'><a class='nav-link' href='./logout.php'>Logout</a></li>";
                 } else {
